@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<backup>
+	<ll_theo>weekly</ll_theo>
+	<weekly>2</weekly>
+	<monthly>9</monthly>
+	<hour>1</hour>
+	<is_bk_fdk>1</is_bk_fdk>
+	<is_bk_csdl>1</is_bk_csdl>
+	<thumuc_dich>/opt/backup</thumuc_dich>
+	<domain>localhost</domain>
+	<admistrator>dnict</admistrator>
+	<pass_admistrator>dnict@2015#CBCC</pass_admistrator>
+</backup>

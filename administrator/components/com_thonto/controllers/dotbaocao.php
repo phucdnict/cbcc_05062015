@@ -1,0 +1,120 @@
+<?php
+/**
+ * @ Author: Phucnh
+ * @ Date: Aug 11, 2015
+ */
+class ThontoControllerDotbaocao extends JControllerLegacy{
+function __construct() {
+		parent::__construct();
+		$this->registerTask('savenew', 'save');
+	}
+	public function saveConfigdot()
+	{
+		$model = $this->getModel('Dotbaocao','ThontoModel');
+		$view = JRequest::getVar('view','');
+		$data = JRequest::get('post');
+		$dotbaocao_id = $data['id'];
+		if($model->delFkKiennghi($dotbaocao_id))
+		{
+			if($model->saveFkKiennghi()){
+				$msg='Xử lý thành công';
+			}else $msg = 'Xử lý lỗi.';
+		}
+		if($model->delFkNoidunghop($dotbaocao_id))
+		{
+			if($model->saveFkNoidunghop()){
+				$msg='Xử lý thành công';
+			}else $msg = 'Xử lý lỗi.';
+		}
+		else $msg = 'Xử lý lỗi.';
+		$link = 'index.php?option=com_thonto&controller='.$view;
+		$this->setRedirect($link, $msg);
+	}
+	public function save(){
+		$task = JRequest::getVar('task',null,'POST');
+		$view = JRequest::getVar('view','');
+		$model = $this->getModel('Dotbaocao','ThontoModel');
+		if ($model->storeData()) {
+			$msg = 'Xử lý thành công!';
+			
+		} else {
+			$msg = 'Xử lý lỗi.';
+		}
+		if ($task == 'savenew'){
+			$link = 'index.php?option=com_thonto&controller='.$view.'&task=edit';
+			$this->setRedirect($link, $msg);
+		}else if($task == 'save') {
+			$link = 'index.php?option=com_thonto&controller='.$view;
+			$this->setRedirect($link, $msg);
+		}else{
+			$post = JRequest::get( 'post' );
+			JRequest::setVar('post',$post);
+			JRequest::setVar( 'view', $view );
+			JRequest::setVar( 'layout', 'edit');
+			parent::display();
+		}
+	}
+	
+	public function cancel(){
+		$view = JRequest::getVar('view','');
+		$link = 'index.php?option=com_thonto&controller='.$view;
+		$this->setRedirect($link, 'Hoạt động đã được hủy bỏ');
+	}
+	public function remove(){
+		$id = JRequest::getInt('id', null);
+		$view = JRequest::getVar('view','');
+		$table = JRequest::getVar('dbtable','');
+		if($id == NULL){
+			$cid = JRequest::getVar('cid', array(0), 'post', 'array');
+		}else{
+			$cid[] = $id;
+		}
+		$model = $this->getModel('Dotbaocao','ThontoModel');
+		$msg = 'Xử lý thành công!';
+		if(!$model->remove($table, $cid)) $msg = 'Xử lý lỗi';
+		$link = 'index.php?option=com_thonto&controller='.$view;
+		$this->setRedirect($link, $msg);
+	}
+	
+	public function saveorder(){
+		$view = JRequest::getVar('view','');
+		$model = $this->getModel('Dotbaocao','ThontoModel');
+		$msg = 'Xử lý thành công!';
+		if(!$model->saveOrders()) $msg = 'Xử lý lỗi';
+		$link = 'index.php?option=com_thonto&view='.$view;
+		$this->setRedirect($link, $msg);
+	}
+	
+	public function publish(){
+		$id = JRequest::getInt('id', null);
+		$view = JRequest::getVar('view','');
+		$table = JRequest::getVar('dbtable','');
+		if($id == NULL){
+			$cid = JRequest::getVar('cid', array(0), 'post', 'array');
+		}else{
+			$cid[] = $id;
+		}
+		$model = $this->getModel('Dotbaocao','ThontoModel');
+		$msg = 'Xử lý thành công!';
+		if(!$model->publish($table, $cid)) $msg = 'Xử lý lỗi';
+		$link = 'index.php?option=com_thonto&controller='.$view;
+		$this->setRedirect($link, $msg);
+	}
+	
+	public function unpublish(){
+		$id = JRequest::getInt('id', null);
+		$view = JRequest::getVar('view','');
+		$table = JRequest::getVar('dbtable','');
+		if($id == NULL){
+			$cid = JRequest::getVar('cid', array(0), 'post', 'array');
+		}else{
+			$cid[] = $id;
+		}
+		$model = $this->getModel('Dotbaocao','ThontoModel');
+		$msg = 'Xử lý thành công!';
+		if(!$model->unpublish($table, $cid)) $msg = 'Xử lý lỗi';
+		$link = 'index.php?option=com_thonto&controller='.$view;
+		$this->setRedirect($link, $msg);
+	}
+}
+		

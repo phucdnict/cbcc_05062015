@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.1" method="upgrade">
+	<name>com_thongke</name>
+      <creationDate>Jan 2015</creationDate>
+      <author>DNICT</author>
+      <authorEmail>phucnh.dn.vn@gmail.com</authorEmail>
+      <authorUrl></authorUrl>
+      <copyright>Copyright © 2014 - All rights reserved.</copyright>
+      <license>GNU/GPL</license>
+      <!--  The version string is recorded in the components table -->
+      <version>3.0</version>
+      <description>Thong ke</description>
+    <files folder="site">
+
+    </files>
+ <administration>
+	    <files folder="admin">
+	    </files>
+    </administration>
+</extension>

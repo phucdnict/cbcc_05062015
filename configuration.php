@@ -13,10 +13,10 @@ class JConfig {
 	public $debug_lang = '0';
 	public $dbtype = 'mysqli';
 	
-// 	public $user = 'root';
-// 	public $host = '127.0.0.1';
-// 	public $password = '';
-// 	public $db = 'cbcc_local';
+	// public $user = 'root';
+	// public $host = '127.0.0.1';
+	// public $password = '';
+	// public $db = 'cbcc_local';
 	
 		public $user = 'root';
 		public $host = '10.49.45.51';

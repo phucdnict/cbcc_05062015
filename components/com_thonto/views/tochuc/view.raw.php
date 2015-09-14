@@ -40,6 +40,12 @@ class ThontosViewTochuc extends JViewLegacy {
   				$this->setLayout('editsoluongkhongchuyentrach');
   				$this->soluongkhongchuyentrach();
   				break;
+			case 'lichsu':
+  				$this->setLayout('lichsu');
+  				break;
+  			case 'editlichsu':
+  				$this->setLayout('editlichsu');
+  				break;
 	  	}
 	  	parent::display($tpl);
 	 }

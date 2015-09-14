@@ -27,6 +27,7 @@ table.dataTable thead .sorting_desc {
 </h3>
 <div class="row-fluid" id="com_thonto_viewdetail"></div>
 <div id='div_soluongkhongchuyentrach'></div>
+<div id='div_lichsu'></div>
 <script type="text/javascript">
 var id;
 var donvi_id;
@@ -44,6 +45,7 @@ var _initViewDetailPage = function(id){
 				jQuery.unblockUI();
 				jQuery('#com_thonto_viewdetail').show();
 				jQuery('#div_soluongkhongchuyentrach').hide();
+				jQuery('#div_lichsu').hide();
 				jQuery('#com_thonto_viewdetail').html(data);
 		  }
 	});	
